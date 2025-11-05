@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  --theme-color: #ec8951;
+  --theme-text: #757575;
+  --theme-dark: #1a1a1a;
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text-dark);
+  padding-bottom: 5px; /* small spacing for the underline */
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0; 
+  width: 0; 
+  height: 3px;
+  background-color: var(--theme-color);
+  border-radius: 25px;
+  transition: width 0.4s ease; 
+}
+
+.link:hover::before, .link.active::before {
+  width: 100%; 
+ 
+}
+
+select{
+    color: #ec8951;
+}
+
+.icon_shadow {
+  box-sizing: border-box;
+    box-shadow: 0 5px 8px #80808094;
+}
