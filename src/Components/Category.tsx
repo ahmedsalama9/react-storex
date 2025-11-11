@@ -2,41 +2,71 @@ import React from "react";
 import Man from "../assets/man.png";
 import Women from "../assets/women.png";
 import Kids from "../assets/kids.png";
+import { Link } from "react-router-dom";
+
+
 function Category() {
+  const brands = [
+    "https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg",
+    "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/uniqlo.svg",
+    "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/dior.svg",
+    "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/puma.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg",
+  ];
+
   return (
     <section>
+      <div>
+        <h3 className="text-center mt-20 mb-15 text-[var(--theme-color)] text-2xl font-semibold">
+          Top Brands
+        </h3>
+        <div className="flex flex-row gap-15 items-center justify-center">
+          {brands.map((item, idex) => (
+            <div key={idex}>
+              <Link to="#">
+                <img src={item} className="w-20" />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="flex flex-row w-[80%] mx-auto mt-20 mb-10 gap-5 overflow-hidden ">
-
-        <div className="w-[550px] h-[370px] hover:scale-102 transition-transform duration-500 ease-in-out " >
-        <a href="#">
-          <img
-            src={Man}
-            alt="category for man"
-            className="w-[500px] h-[350px] object-cover object-top rounded-lg "
-          />
-        </a>
+        <div className="w-[550px] h-[370px] hover:scale-102 transition-transform duration-500 ease-in-out ">
+          <Link to="#">
+            <img
+              src={Man}
+              alt="category for man"
+              className="w-[500px] h-[350px] object-cover object-top rounded-lg "
+            />
+          </Link>
         </div>
 
-        <div className="w-[550px] h-[370px] hover:scale-102 transition-transform duration-500 ease-in-out " >
-        <a href="#">
-          <img
-            src={Women}
-            alt="category for women"
-            className="w-[500px] h-[350px] object-cover rounded-lg"
-          />
-        </a>
+        <div className="w-[550px] h-[370px] hover:scale-102 transition-transform duration-500 ease-in-out ">
+          <a href="#">
+            <img
+              src={Women}
+              alt="category for women"
+              className="w-[500px] h-[350px] object-cover rounded-lg"
+            />
+          </a>
         </div>
 
-        <div className="w-[550px] h-[370px] hover:scale-102 transition-transform duration-500 ease-in-out " >
-        <a href="#">
-          <img
-            src={Kids}
-            alt="category for kids"
-            className="w-[500px] h-[350px] object-cover object-top rounded-lg"
-          />
-        </a>
+        <div className="w-[550px] h-[370px] hover:scale-102 transition-transform duration-500 ease-in-out ">
+          <a href="#">
+            <img
+              src={Kids}
+              alt="category for kids"
+              className="w-[500px] h-[350px] object-cover object-top rounded-lg"
+            />
+          </a>
         </div>
-        </div>
+      </div>
     </section>
   );
 }
