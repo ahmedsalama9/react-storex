@@ -72,7 +72,7 @@ function NavBar() {
                 Store: 1234 New Damietta, Egypt
               </p>
             </div>
-            <div className="flex flex-row items-center justify-center gap-5 ">
+            {/* <div className="flex flex-row items-center justify-center gap-5 ">
               <select
                 defaultValue="EN"
                 className="bg-[var(--text-dark)] text-white px-2 py-1 rounded-md outline-none cursor-pointer hover:opacity-90"
@@ -85,7 +85,7 @@ function NavBar() {
                 <option>SAR</option>
                 <option>EUR</option>
               </select>
-            </div>
+            </div> */}
           </div>
           {/**main bar */}
           <div className="xl:flex lg:flex md:hidden sm:hidden hidden flex-row items-center justify-around w-[70%] mx-auto">

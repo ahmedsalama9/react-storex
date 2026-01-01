@@ -13,7 +13,6 @@ import SingleProduct from "./Pages/SingleProduct";
 import WishList from "./Pages/WishList";
 import Women from "./Pages/Women";
 
-
 function App() {
   return (
     <div>
@@ -30,6 +29,9 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/wish" element={<WishList />} />
       </Routes>
+      <div className="mt-20">
+        <Footer />
+      </div>
       {/* <Footer/> */}
     </div>
   );

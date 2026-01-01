@@ -7,7 +7,7 @@ import Star from "../assets/star.svg";
 import BlackBanner from "../assets/Black.png";
 import { useState } from "react";
 import { useEffect } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
@@ -56,9 +56,8 @@ function LatestProducts() {
             spaceBetween={20}
             slidesPerView={5}
             navigation
-            pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
+            pagination={{ clickable: false }}
+
           >
             {products.map((item, i) => (
               <SwiperSlide>
@@ -120,14 +119,17 @@ function LatestProducts() {
                       />
                       <span>Add to Cart </span>
                     </button>
-                    <button className=" flex flex-row gap-4 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer">
+                    <Link
+                      to={`/shop/${item.id}`}
+                      className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer"
+                    >
                       <img
                         src={Wish}
                         alt="cart"
                         className="w-6 cursor-pointer hover:scale-110  transition-all duration-400 icon_shadow rounded-full bg-white p-1"
                       />
-                      <span>Wish List </span>
-                    </button>
+                      <span> View </span>
+                    </Link>
                   </div>
 
                   <span></span>

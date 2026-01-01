@@ -92,7 +92,7 @@ function SingleProduct() {
       </div>
       {/*for product details */}
       <div className="mt-5 max-w-[90%] mx-auto p-6 bg-white rounded-xl shadow-sm ">
-        <div className="flex flex-row items-center justify-center gap-3 text-xl font-bold">
+        <div className="flex flex-row items-center justify-center gap-15 text-xl font-bold">
           <button
             onClick={() => setTab("Product Description")}
             className={`cursor-pointer ${

@@ -42,24 +42,13 @@ function Man() {
 
   return (
     <div className="flex flex-row items-center justify-center">
-      {/* for filter side */}
-      <div className="w-[20%]"> filter</div>
+
       {/* for product side */}
       <div className="mt-40">
         {/* for sorting & layout */}
         <div className="flex flex-row items-center justify-between w-[90%] mx-auto">
           {" "}
-          <div className="border-2 border-[var(--theme-dark)] rounded-sm px-2 py-0.1 font-medium text-[18px] ">
-            <select className="cursor-pointer">
-              <option selected disabled>
-                Sort BY
-              </option>
-              <option value="Premium">Premium</option>
-              <option value="price up">Price Up</option>
-              <option value="price down">Price Down</option>
-              <option value="Recent">Recent</option>
-            </select>
-          </div>
+         
           <div className="flex flex-row gap-3 items-center justify-center">
             <img
               onClick={() => setLayOut("grid")}
@@ -78,7 +67,7 @@ function Man() {
         {/* for products */}
         <div
           className={`grid mt-5 ${
-            layOut === "grid" ? " grid-cols-5 " : "grid-cols-3"
+            layOut === "grid" ? " grid-cols-4 " : "grid-cols-3"
           }`}
         >
           {manCategory
@@ -158,14 +147,15 @@ function Man() {
                     />
                     <span>Add to Cart </span>
                   </button>
-                  <button className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer">
+                  <Link to={`/shop/${item.id}`} className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer">
+
                     <img
                       src={Wish}
                       alt="cart"
                       className="w-6 cursor-pointer hover:scale-110  transition-all duration-400 icon_shadow rounded-full bg-white p-1"
                     />
-                    <span>Wish List </span>
-                  </button>
+                    <span> View </span>
+                  </Link>
                 </div>
               </div>
             ))}

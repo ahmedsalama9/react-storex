@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -9,10 +9,13 @@ import { Link } from "react-router-dom";
 
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
+import Filter from "../Components/Filter";
 
 function Shop() {
-  const [fakeProducts, setfakeProducts] = useState([]);
+  const [fakeProducts, setfakeProducts] = useState([]); //api
   const [layOut, setLayOut] = useState("grid");
+  const [catFilter, setCatFilter] = useState([]); // filter
+  const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
     const fakeProductFetch = async () => {
@@ -24,27 +27,61 @@ function Shop() {
         console.error(err);
       }
     };
+
     fakeProductFetch();
   }, []);
 
+  const filterProducts = useMemo(() => {
+    let items = fakeProducts;
+    if (catFilter.length > 0) {
+      items = items.filter((products) => catFilter.includes(products.category));
+    }
+
+    // Sorting
+    if (sortBy === "relative") {
+      items = items.sort((a, b) => a.price - b.price);
+    }
+    if (sortBy === "Premium") {
+      items = items.sort((a, b) => b.rating.rate - a.rating.rate);
+    }
+    if (sortBy === "priceUp") {
+      items = items.sort((a, b) => b.price - a.price);
+    }
+    if (sortBy === "priceDown") {
+      items = items.sort((a, b) => a.price - b.price);
+    }
+
+    if (sortBy === "recent") {
+      // note: fake api end point do not provide date,, in real endpoint use date instead of id
+      items = items.sort((a, b) => new Date(b.id) - new Date(a.id));
+    }
+    return items;
+  }, [fakeProducts, catFilter, sortBy]);
+
+  console.log(filterProducts);
+
   return (
-    <div className="flex flex-row w-[90%] mx-auto mt-20 ">
-      {/* for filer col */}
-      <div className="w-[10%] ">fiilters</div>
+    <div className="flex flex-col w-[90%] mx-auto mt-20 ">
       {/* for product section */}
       <div className="flex-2 mt-20">
         {/* for sorting, switch layouts */}
         <div className="flex flex-row items-center justify-between w-[90%] mx-auto">
           <div className="border-2 border-[var(--theme-dark)] rounded-sm px-2 py-0.1 font-medium text-[18px] ">
-            <select className="cursor-pointer">
-              <option selected disabled>
-                Sort BY
-              </option>
+            <select
+              className="cursor-pointer"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option disabled>Sort BY</option>
+              <option value="relative">Relative</option>
               <option value="Premium">Premium</option>
-              <option value="price up">Price Up</option>
-              <option value="price down">Price Down</option>
-              <option value="Recent">Recent</option>
+              <option value="priceUp">Price up </option>
+              <option value="priceDown">Price Down</option>
+              <option value="recent">Recent</option>
             </select>
+          </div>
+          <div className="">
+            <Filter catFilter={catFilter} setCatFilter={setCatFilter} />
           </div>
           <div className="flex flex-row gap-3 items-center justify-center">
             <img
@@ -69,9 +106,9 @@ function Shop() {
               : "grid grid-cols-3 w-[70%] mx-auto gap-5"
           }`}
         >
-          {fakeProducts.map((item, index) => (
+          {filterProducts.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className="shadow-lg rounded-lg cursor-pointer flex  flex-col items-start p-4"
             >
               <img

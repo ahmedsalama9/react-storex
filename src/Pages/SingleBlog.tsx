@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import User from "../assets/user.svg";
 import { Link } from "react-router-dom";
 import View from "../assets/view.svg";
-import PostDate from "../assets/dates.svg"
+import PostDate from "../assets/dates.svg";
 function SingleBlog() {
   const { id } = useParams();
   const [singleBlog, setSingleBlog] = useState(null);
@@ -63,16 +63,19 @@ function SingleBlog() {
               src={View}
               alt="user"
               className="w-5 cursor-pointer hover:scale-110  transition-all duration-400 icon_shadow rounded-full bg-white p-1"
-            /> {singleBlog.views} views</span>
-    
-    <span className="flex flex-row items-center justify-center gap-3">
-          <img
+            />{" "}
+            {singleBlog.views} views
+          </span>
+
+          <span className="flex flex-row items-center justify-center gap-3">
+            <img
               src={PostDate}
               alt="user"
               className="w-5 cursor-pointer hover:scale-110  transition-all duration-400 icon_shadow rounded-full bg-white p-1"
-            /> 
+            />
 
-             {new Date().toLocaleDateString()}</span>
+            {new Date().toLocaleDateString()}
+          </span>
         </div>
 
         {/* Body */}
@@ -95,9 +98,7 @@ function SingleBlog() {
         )}
 
         {/* Reactions Summary Card */}
-        <div className="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-100 flex justify-between items-center">
-  
-        </div>
+        <div className="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-100 flex justify-between items-center"></div>
       </div>
     </div>
   );
