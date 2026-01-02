@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -58,52 +58,53 @@ function Shop() {
     return items;
   }, [fakeProducts, catFilter, sortBy]);
 
-  console.log(filterProducts);
-
   return (
     <div className="flex flex-col w-[90%] mx-auto mt-20 ">
       {/* for product section */}
       <div className="flex-2 mt-20">
         {/* for sorting, switch layouts */}
-        <div className="flex flex-row items-center justify-between w-[90%] mx-auto">
-          <div className="border-2 border-[var(--theme-dark)] rounded-sm px-2 py-0.1 font-medium text-[18px] ">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full sm:w-[95%] mx-auto gap-3 sm:gap-0">
+          <div className="border-2 border-[var(--theme-dark)] rounded-sm px-2 py-0.5 font-medium text-[16px] sm:text-[18px] w-full sm:w-auto">
             <select
-              className="cursor-pointer"
+              className="cursor-pointer w-full sm:w-auto"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
               <option disabled>Sort BY</option>
               <option value="relative">Relative</option>
               <option value="Premium">Premium</option>
-              <option value="priceUp">Price up </option>
+              <option value="priceUp">Price up</option>
               <option value="priceDown">Price Down</option>
               <option value="recent">Recent</option>
             </select>
           </div>
-          <div className="">
+
+          <div className="w-full sm:w-auto">
             <Filter catFilter={catFilter} setCatFilter={setCatFilter} />
           </div>
-          <div className="flex flex-row gap-3 items-center justify-center">
+
+          <div className="flex flex-row gap-3 items-center justify-start sm:justify-center w-full sm:w-auto">
             <img
               onClick={() => setLayOut("grid")}
               src={Grid}
               alt="product shop layout-grid"
-              className="w-9 bg-white shadow-lg p-1 rounded-full cursor-pointer hover:rotate-10 duration-400 transitin-ease"
+              className="w-9 bg-white shadow-lg p-1 rounded-full cursor-pointer hover:rotate-10 transition-transform duration-400 ease-in-out"
             />
             <img
               onClick={() => setLayOut("list")}
               src={List}
               alt="product shop layout-list"
-              className="w-9 bg-white shadow-lg p-1 rounded-full cursor-pointer hover:-rotate-10 duration-400 transitin-ease"
+              className="w-9 bg-white shadow-lg p-1 rounded-full cursor-pointer hover:-rotate-10 transition-transform duration-400 ease-in-out"
             />
           </div>
         </div>
+
         {/* the products */}
         <div
-          className={`mt-10 mb-10  ${
+          className={`mt-10 mb-10 ${
             layOut === "grid"
-              ? "grid grid-cols-5 mx-auto"
-              : "grid grid-cols-3 w-[70%] mx-auto gap-5"
+              ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto gap-6"
+              : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-[90%] mx-auto gap-5"
           }`}
         >
           {filterProducts.map((item) => (

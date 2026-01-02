@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -9,7 +8,7 @@ import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice";
-
+import { useEffect } from "react";
 function Man() {
   const dispatch = useDispatch();
 
@@ -66,8 +65,10 @@ function Man() {
         </div>
         {/* for products */}
         <div
-          className={`grid mt-5 ${
-            layOut === "grid" ? " grid-cols-4 " : "grid-cols-3"
+           className={`mt-10 mb-10 ${
+            layOut === "grid"
+              ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto gap-6"
+              : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-[90%] mx-auto gap-5"
           }`}
         >
           {manCategory

@@ -1,4 +1,3 @@
-import React from "react";
 import "../index.css"; // Make sure your :root vars and .link class are here
 import Logo from "../assets/logo.png";
 export default function Footer() {

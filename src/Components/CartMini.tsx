@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Cart from "../assets/cart.svg";
 import Trash from "../assets/trash.svg";

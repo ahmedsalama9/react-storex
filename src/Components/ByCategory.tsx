@@ -1,4 +1,3 @@
-import React from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -8,21 +7,21 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function ByCategory() {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [tab, setTab] = useState("all");
 
   useEffect(() => {
     const productsFetch = async () => {
       try {
         const res = await fetch("https://fakestoreapi.com/products?limit=24");
-        const data = await res.json();
+        const data: string[] = await res.json();
 
         setProducts(data);
 
         const fetchCategories = [
           "all",
-          ...new Set(data.map((item) => item.category)),
+          ...new Set(data.map((item: string) => item.category)),
         ];
         setCategories(fetchCategories);
       } catch (err) {
@@ -45,7 +44,7 @@ function ByCategory() {
           quality. Each product is selected to inspire your everyday style.
         </p>
       </div>
-      <div className="flex flex-row items-center justify-center gap-5 mt-10 text-[var(--theme-dark)] text-xl font-semibold cursor-pointer ">
+      <div className="flex flex-wrap sm:flex-row items-center justify-center gap-3 sm:gap-5 mt-10 text-[var(--theme-dark)] text-base sm:text-xl font-semibold cursor-pointer px-4">
         {categories.map((itemCat) => (
           <button
             onClick={() => setTab(itemCat)}
@@ -57,7 +56,7 @@ function ByCategory() {
           </button>
         ))}
       </div>
-      <div className="mt-10 mb-10 grid grid-cols-5 w-[80%] mx-auto">
+      <div className="mt-10 mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 w-[80%] mx-auto gap-6">
         {products
           .filter((product) => tab === "all" || product.category === tab)
           .map((item) => (

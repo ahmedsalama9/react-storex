@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Hero1 from "../assets/hero1.png";
 import Hero2 from "../assets/hero2.png";
 import Hero3 from "../assets/hero3.png";
@@ -29,8 +29,8 @@ function Hero() {
   };
 
   return (
-    <section className="mt-20">
-      <div className="absolute flex flex-row top-1/2 items-center justify-between w-full px-3">
+    <section className="mt-0">
+      <div className="absolute flex flex-row xl:top-1/2 lg:top-1/2 md:top-[30%] top-[30%] items-center justify-between xl:w-full lg:w-full w-fit px-3">
         <img
           onClick={nextSlider}
           src={Left}
@@ -45,7 +45,7 @@ function Hero() {
         />
       </div>
       <div className="flex flex-row">
-        <img src={images[slider]} className="w-full h-[800px] object-cover" />
+        <img src={images[slider]} className="w-full lg:h-[800px] lg:object-cover object-contain" />
       </div>
     </section>
   );

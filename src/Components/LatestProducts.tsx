@@ -1,5 +1,3 @@
-import React from "react";
-import Man from "../assets/man.png";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -40,24 +38,29 @@ function LatestProducts() {
     <>
       <section className="flex flex-col items-center justify-center w-[90%] mx-auto">
         <div className="text-center">
-          <p className="text-[var(--theme-color)] text-xl">Special Offets</p>
-          <h2 className="text-[var(--theme-dark)] text-3xl font-semibold mt-3">
+          <p className="text-[var(--theme-color)] text-lg sm:text-xl">
+            Special Offers
+          </p>
+          <h2 className="text-[var(--theme-dark)] text-2xl sm:text-3xl font-semibold mt-3">
             LATEST PRODUCTS
           </h2>
-          <p className="w-[55%] mx-auto mt-5 font-normal text-lg">
+          <p className="max-w-2xl mx-auto mt-4 text-sm sm:text-lg text-gray-600">
             Explore our newest additions, blending modern design with timeless
-            quality. Each product is selected to inspire your everyday style.
+            quality.
           </p>
         </div>
         <div className="mt-10 mb-10 w-full mx-auto cursor-grab">
           {/**product cart */}
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={20}
-            slidesPerView={5}
-            navigation
-            pagination={{ clickable: false }}
-
+            breakpoints={{
+              320: { slidesPerView: 1.2 },
+              480: { slidesPerView: 1.5 },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 2.5 },
+              1024: { slidesPerView: 3.5 },
+              1280: { slidesPerView: 5 },
+            }}
           >
             {products.map((item, i) => (
               <SwiperSlide>
@@ -140,13 +143,13 @@ function LatestProducts() {
         </div>
       </section>
 
-      {/**banner one */}
-      <div className="w-full mt-10 mb-10">
-        <a href="#">
+      {/*Banner */}
+      <div className="w-full my-10">
+        <a href="#" className="block">
           <img
             src={BlackBanner}
             alt="category for women"
-            className="w-full h-[550px] object-cover object-center "
+            className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[550px] object-cover object-center"
           />
         </a>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -45,9 +45,11 @@ function Women() {
         </div>
         {/* for products */}
         <div
-          className={`grid mt-5 ${
-            layOut === "grid" ? "grid-cols-4" : "grid-cols-3"
-          } `}
+           className={`mt-10 mb-10 ${
+            layOut === "grid"
+              ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto gap-6"
+              : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-[90%] mx-auto gap-5"
+          }`}
         >
           {womenCat
             .filter((products) => products.category === "women's clothing")

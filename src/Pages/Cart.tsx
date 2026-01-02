@@ -1,4 +1,3 @@
-import React from "react";
 import CartIcon from "../assets/cart.svg";
 import Trash from "../assets/trash.svg";
 import { useSelector, useDispatch } from "react-redux";

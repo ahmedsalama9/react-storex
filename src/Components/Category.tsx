@@ -1,4 +1,3 @@
-import React from "react";
 import Man from "../assets/man.png";
 import Women from "../assets/women.png";
 import Kids from "../assets/kids.png";
@@ -25,7 +24,7 @@ function Category() {
         <h3 className="text-center mt-20 mb-15 text-[var(--theme-color)] text-2xl font-semibold">
           Top Brands
         </h3>
-        <div className="flex flex-row gap-15 items-center justify-center">
+        <div className="grid xl:grid-cols-10 lg:grid-cols-10 grid-cols-3 gap-6 gap-y-10 items-center w-[70%] mx-auto ">
           {brands.map((item, idex) => (
             <div key={idex}>
               <Link to="#">
@@ -36,7 +35,7 @@ function Category() {
         </div>
       </div>
 
-      <div className="flex flex-row w-[80%] mx-auto mt-20 mb-10 gap-5 overflow-hidden ">
+      <div className="flex xl:flex-row lg:flex-row md:flex-row flex-col w-[80%] mx-auto mt-20 mb-10 gap-5 overflow-hidden ">
         <div className="w-[550px] h-[370px] hover:scale-102 transition-transform duration-500 ease-in-out ">
           <Link to="#">
             <img
