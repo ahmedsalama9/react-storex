@@ -6,16 +6,29 @@ import { useEffect, useState } from "react";
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  discount?: number; 
+}
 
 function Kids() {
-  const [kidsCat, setKidsCat] = useState([]);
+  const [kidsCat, setKidsCat] = useState<Product[]>([]);
   const [layOut, setLayOut] = useState("grid");
 
   useEffect(() => {
     const jeweleryProducts = async () => {
       try {
         const res = await fetch("https://fakestoreapi.com/products?limit=24");
-        const data = await res.json();
+        const data: Product[] = await res.json();
         setKidsCat(data);
       } catch (err) {
         console.error(err);

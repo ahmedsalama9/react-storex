@@ -1,12 +1,26 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  discount?: number;
+}
+
 function SingleProduct() {
   const { id } = useParams();
-  const [singleProducts, setSingleProducts] = useState(null);
+  const [singleProducts, setSingleProducts] = useState<Product[]>(null);
 
   const [tab, setTab] = useState("Product Description");
 
@@ -14,7 +28,7 @@ function SingleProduct() {
     const singleProdFetch = async () => {
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-        const data = await response.json();
+        const data: Product[] = await response.json();
         setSingleProducts(data);
       } catch (err) {
         console.error(err);

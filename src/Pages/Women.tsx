@@ -7,14 +7,28 @@ import { useState } from "react";
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  discount?: number; 
+}
 function Women() {
-  const [womenCat, setWomenCat] = useState([]);
+  const [womenCat, setWomenCat] = useState<Product[]>([]);
   const [layOut, setLayOut] = useState("grid");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products?limit=24")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: Product[]) => {
         setWomenCat(data);
       })
       .catch((err) => console.error(err));

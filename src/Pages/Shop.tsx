@@ -10,9 +10,22 @@ import { Link } from "react-router-dom";
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
 import Filter from "../Components/Filter";
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  discount?: number;
+}
 
 function Shop() {
-  const [fakeProducts, setfakeProducts] = useState([]); //api
+  const [fakeProducts, setfakeProducts] = useState<Product[]>([]); //api
   const [layOut, setLayOut] = useState("grid");
   const [catFilter, setCatFilter] = useState([]); // filter
   const [sortBy, setSortBy] = useState("");
@@ -21,7 +34,7 @@ function Shop() {
     const fakeProductFetch = async () => {
       try {
         const res = await fetch("https://fakestoreapi.com/products?limit=24");
-        const data = await res.json();
+        const data: Product[] = await res.json();
         setfakeProducts(data);
       } catch (err) {
         console.error(err);
@@ -70,7 +83,6 @@ function Shop() {
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
-              <option disabled>Sort BY</option>
               <option value="relative">Relative</option>
               <option value="Premium">Premium</option>
               <option value="priceUp">Price up</option>
@@ -173,14 +185,17 @@ function Shop() {
                   />
                   <span>Add to Cart </span>
                 </button>
-                <button className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer">
+                <Link
+                  to={`/shop/${item.id}`}
+                  className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer"
+                >
                   <img
                     src={Wish}
                     alt="cart"
                     className="w-6 cursor-pointer hover:scale-110  transition-all duration-400 icon_shadow rounded-full bg-white p-1"
                   />
-                  <span>Wish List </span>
-                </button>
+                  <span> View </span>
+                </Link>
               </div>
             </div>
           ))}

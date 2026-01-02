@@ -9,17 +9,31 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice";
 import { useEffect } from "react";
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  discount?: number; 
+}
+
 function Man() {
   const dispatch = useDispatch();
 
-  const [manCategory, setManCategory] = useState([]);
+  const [manCategory, setManCategory] = useState<Product[]>([]);
   const [layOut, setLayOut] = useState("grid");
 
   useEffect(() => {
     const manProducts = async () => {
       try {
         const res = await fetch("https://fakestoreapi.com/products?limit=24");
-        const data = await res.json();
+        const data: Product[] = await res.json();
         setManCategory(data);
       } catch (err) {
         console.error(err);
