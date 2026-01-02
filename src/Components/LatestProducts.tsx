@@ -7,8 +7,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -17,15 +15,27 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  discount?: number;
+}
 function LatestProducts() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const latestProd = async () => {
       try {
         const res = await fetch("https://fakestoreapi.com/products?limit=30");
-        const data = await res.json();
+        const data: Product[] = await res.json();
         setProducts(data);
       } catch (err) {
         console.error(err);

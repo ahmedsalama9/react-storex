@@ -27,7 +27,7 @@ interface Product {
 function Shop() {
   const [fakeProducts, setfakeProducts] = useState<Product[]>([]); //api
   const [layOut, setLayOut] = useState("grid");
-  const [catFilter, setCatFilter] = useState([]); // filter
+  const [catFilter, setCatFilter] = useState<string[]>([]); // filter
   const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {

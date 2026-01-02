@@ -5,9 +5,21 @@ import Star from "../assets/star.svg";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  discount?: number;
+}
 function ByCategory() {
-  const [products, setProducts] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [tab, setTab] = useState("all");
 
@@ -15,13 +27,13 @@ function ByCategory() {
     const productsFetch = async () => {
       try {
         const res = await fetch("https://fakestoreapi.com/products?limit=24");
-        const data: string[] = await res.json();
+        const data: Product[] = await res.json();
 
         setProducts(data);
 
         const fetchCategories = [
           "all",
-          ...new Set(data.map((item: string) => item.category)),
+          ...new Set(data.map((item) => item.category)),
         ];
         setCategories(fetchCategories);
       } catch (err) {
