@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import Map from "../assets/location.svg";
@@ -17,15 +17,15 @@ import "swiper/css/navigation";
 
 import CartMini from "./CartMini";
 
-function NavBar() {
+function NavBar(): JSX.Element {
   const navigate = useNavigate();
 
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [brandsOpen, setBrandsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
+  const [cartOpen, setCartOpen] = useState<boolean>(false);
+  const [brandsOpen, setBrandsOpen] = useState<boolean>(false);
 
-  const brands = [
+  const brands: string[] = [
     "https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg",
     "https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg",
     "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
@@ -100,8 +100,6 @@ function NavBar() {
                       1024: { slidesPerView: 6, spaceBetween: 10 }, // small desktops
                       1280: { slidesPerView: 8, spaceBetween: 10 }, // large desktops
                     }}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log("slide change")}
                     className="bg-white mt-5 rounded-lg"
                   >
                     {brands.map((item, index) => (

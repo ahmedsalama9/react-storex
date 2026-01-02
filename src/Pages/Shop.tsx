@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import React, { JSX, useEffect, useMemo } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -24,11 +24,18 @@ interface Product {
   discount?: number;
 }
 
-function Shop() {
+type SortingValues =
+  | "relative"
+  | "Premium"
+  | "priceUp"
+  | "priceDown"
+  | "recent";
+  
+function Shop(): JSX.Element {
   const [fakeProducts, setfakeProducts] = useState<Product[]>([]); //api
   const [layOut, setLayOut] = useState("grid");
   const [catFilter, setCatFilter] = useState<string[]>([]); // filter
-  const [sortBy, setSortBy] = useState("");
+  const [sortBy, setSortBy] = useState<SortingValues>("relative");
 
   useEffect(() => {
     const fakeProductFetch = async () => {
@@ -45,28 +52,29 @@ function Shop() {
   }, []);
 
   const filterProducts = useMemo(() => {
-    let items = fakeProducts;
+    // sorting is mutating the original array
+    let items = [...fakeProducts];
     if (catFilter.length > 0) {
       items = items.filter((products) => catFilter.includes(products.category));
     }
 
     // Sorting
     if (sortBy === "relative") {
-      items = items.sort((a, b) => a.price - b.price);
+      items = [...items].sort((a, b) => a.price - b.price);
     }
     if (sortBy === "Premium") {
-      items = items.sort((a, b) => b.rating.rate - a.rating.rate);
+      items = [...items].sort((a, b) => b.rating.rate - a.rating.rate);
     }
     if (sortBy === "priceUp") {
-      items = items.sort((a, b) => b.price - a.price);
+      items = [...items].sort((a, b) => b.price - a.price);
     }
     if (sortBy === "priceDown") {
-      items = items.sort((a, b) => a.price - b.price);
+      items = [...items].sort((a, b) => a.price - b.price);
     }
 
     if (sortBy === "recent") {
       // note: fake api end point do not provide date,, in real endpoint use date instead of id
-      items = items.sort((a, b) => new Date(b.id) - new Date(a.id));
+      items = [...items].sort((a, b) => b.id - a.id);
     }
     return items;
   }, [fakeProducts, catFilter, sortBy]);
@@ -81,7 +89,7 @@ function Shop() {
             <select
               className="cursor-pointer w-full sm:w-auto"
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              onChange={(e) => setSortBy(e.target.value as SortingValues)}
             >
               <option value="relative">Relative</option>
               <option value="Premium">Premium</option>

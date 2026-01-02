@@ -2,10 +2,10 @@ import Man from "../assets/man.png";
 import Women from "../assets/women.png";
 import Kids from "../assets/kids.png";
 import { Link } from "react-router-dom";
+import { JSX } from "react";
 
-
-function Category() {
-  const brands = [
+function Category(): JSX.Element {
+  const brands: string[] = [
     "https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg",
     "https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg",
     "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
@@ -25,7 +25,7 @@ function Category() {
           Top Brands
         </h3>
         <div className="grid xl:grid-cols-10 lg:grid-cols-10 grid-cols-3 gap-6 gap-y-10 items-center w-[70%] mx-auto ">
-          {brands.map((item, idex) => (
+          {brands.map((item: string, idex: number) => (
             <div key={idex}>
               <Link to="#">
                 <img src={item} className="w-20" />

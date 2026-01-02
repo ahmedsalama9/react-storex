@@ -3,8 +3,9 @@ import Trash from "../assets/trash.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItem, clearCart, increaseQuantity, decreaseQuantity } from "../redux/cartSlice";
 import type { RootState, AppDispatch } from "../redux/store";
+import { JSX } from "react";
 
-function CartPage() {
+function CartPage(): JSX.Element {
   const dispatch: AppDispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart);
 

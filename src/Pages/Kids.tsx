@@ -2,7 +2,7 @@ import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
 import Star from "../assets/star.svg";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
@@ -17,10 +17,10 @@ interface Product {
     rate: number;
     count: number;
   };
-  discount?: number; 
+  discount?: number;
 }
 
-function Kids() {
+function Kids(): JSX.Element {
   const [kidsCat, setKidsCat] = useState<Product[]>([]);
   const [layOut, setLayOut] = useState("grid");
 

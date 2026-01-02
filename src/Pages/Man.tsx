@@ -2,13 +2,15 @@ import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
 import Star from "../assets/star.svg";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice";
 import { useEffect } from "react";
+import type { AppDispatch } from "../redux/store";
+
 interface Product {
   id: number;
   title: string;
@@ -20,11 +22,11 @@ interface Product {
     rate: number;
     count: number;
   };
-  discount?: number; 
+  discount?: number;
 }
 
-function Man() {
-  const dispatch = useDispatch();
+function Man(): JSX.Element {
+  const dispatch: AppDispatch = useDispatch();
 
   const [manCategory, setManCategory] = useState<Product[]>([]);
   const [layOut, setLayOut] = useState("grid");
@@ -42,7 +44,7 @@ function Man() {
     manProducts();
   }, []);
 
-  const addProductToCart = (item) => {
+  const addProductToCart = (item: Product) => {
     dispatch(
       addItem({
         id: item.id,
@@ -55,13 +57,11 @@ function Man() {
 
   return (
     <div className="flex flex-row items-center justify-center">
-
       {/* for product side */}
       <div className="mt-40">
         {/* for sorting & layout */}
         <div className="flex flex-row items-center justify-between w-[90%] mx-auto">
           {" "}
-         
           <div className="flex flex-row gap-3 items-center justify-center">
             <img
               onClick={() => setLayOut("grid")}
@@ -79,7 +79,7 @@ function Man() {
         </div>
         {/* for products */}
         <div
-           className={`mt-10 mb-10 ${
+          className={`mt-10 mb-10 ${
             layOut === "grid"
               ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto gap-6"
               : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-[90%] mx-auto gap-5"
@@ -151,7 +151,6 @@ function Man() {
                   <button
                     onClick={() => {
                       addProductToCart(item);
-                      console.log("added" + item);
                     }}
                     className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer"
                   >
@@ -162,8 +161,10 @@ function Man() {
                     />
                     <span>Add to Cart </span>
                   </button>
-                  <Link to={`/shop/${item.id}`} className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer">
-
+                  <Link
+                    to={`/shop/${item.id}`}
+                    className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer"
+                  >
                     <img
                       src={Wish}
                       alt="cart"

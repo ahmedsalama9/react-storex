@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, JSX } from "react";
 import Hero1 from "../assets/hero1.png";
 import Hero2 from "../assets/hero2.png";
 import Hero3 from "../assets/hero3.png";
 import Left from "../assets/left.svg";
 import Right from "../assets/right.svg";
 
-function Hero() {
-  const [slider, setSlider] = useState(0);
-  const images = [Hero1, Hero2, Hero3];
+function Hero(): JSX.Element {
+  const [slider, setSlider] = useState<number>(0);
+  const images: string[] = [Hero1, Hero2, Hero3];
 
   //for auto slide every 3sec
   useEffect(() => {
@@ -45,7 +45,10 @@ function Hero() {
         />
       </div>
       <div className="flex flex-row">
-        <img src={images[slider]} className="w-full lg:h-[800px] lg:object-cover object-contain" />
+        <img
+          src={images[slider]}
+          className="w-full lg:h-[800px] lg:object-cover object-contain"
+        />
       </div>
     </section>
   );

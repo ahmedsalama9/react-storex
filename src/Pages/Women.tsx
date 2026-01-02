@@ -67,7 +67,7 @@ function Women() {
         >
           {womenCat
             .filter((products) => products.category === "women's clothing")
-            .map((item, index) => (
+            .map((item: Product, index: number) => (
               <div
                 key={index}
                 className="shadow-lg rounded-lg cursor-pointer flex  flex-col items-start p-4"

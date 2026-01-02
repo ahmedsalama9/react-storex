@@ -59,6 +59,7 @@ function ByCategory() {
       <div className="flex flex-wrap sm:flex-row items-center justify-center gap-3 sm:gap-5 mt-10 text-[var(--theme-dark)] text-base sm:text-xl font-semibold cursor-pointer px-4">
         {categories.map((itemCat) => (
           <button
+            key={itemCat}
             onClick={() => setTab(itemCat)}
             className={` cursor-pointer px-2 py-1  ${
               tab === itemCat ? "text-[var(--theme-color)] rounded-lg" : "link"

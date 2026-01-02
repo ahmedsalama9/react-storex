@@ -5,15 +5,25 @@ import User from "../assets/user.svg";
 import { Link } from "react-router-dom";
 import View from "../assets/view.svg";
 import PostDate from "../assets/dates.svg";
+// to handel the items coming from one post
+interface Blog {
+  id: number;
+  userId: number;
+  views: number;
+  title: string;
+  body: string;
+  tags: string[];
+}
+
 function SingleBlog() {
-  const { id } = useParams();
-  const [singleBlog, setSingleBlog] = useState(null);
+  const { id } = useParams<{ id: string }>();
+  const [singleBlog, setSingleBlog] = useState<Blog | null>(null);
 
   useEffect(() => {
     const singleBlogFn = async () => {
       try {
         const response = await fetch(`https://dummyjson.com/posts/${id}`);
-        const data = await response.json();
+        const data: Blog = await response.json();
 
         setSingleBlog(data);
       } catch (err) {
@@ -22,7 +32,6 @@ function SingleBlog() {
     };
     singleBlogFn();
   }, [id]);
-  if (!singleBlog) return <div>single blog is ready</div>;
 
   return (
     <div>

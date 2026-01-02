@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { JSX, useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,14 +6,30 @@ import User from "../assets/user.svg";
 import View from "../assets/view.svg";
 import PostDate from "../assets/dates.svg";
 
-function Blog() {
-  const [blog, setBlog] = useState([]);
+// to handel the items coming from one post
+interface Blog {
+  id: number;
+  title: string;
+  userId: number;
+  views: number;
+  body: string;
+}
+
+// to handel the posts as bulk and structure returns from the api
+interface BlogForApi {
+  posts: Blog[]; // fro an array of posts
+  total: number; // for the numbers of posts returns from database
+  skip: number; // to handel the number of posts per page
+  limit: number; // to handel number of posts per request (not used in the posts)
+}
+function Blog(): JSX.Element {
+  const [blog, setBlog] = useState<Blog[]>([]);
 
   useEffect(() => {
     const blogFetch = async () => {
       try {
         const response = await fetch("https://dummyjson.com/posts");
-        const data = await response.json();
+        const data: BlogForApi = await response.json();
 
         setBlog(data.posts);
       } catch (err) {

@@ -19,8 +19,8 @@ interface Product {
 }
 
 function SingleProduct() {
-  const { id } = useParams();
-  const [singleProducts, setSingleProducts] = useState<Product[]>(null);
+  const { id } = useParams<{ id: string }>();
+  const [singleProducts, setSingleProducts] = useState<Product | null>(null);
 
   const [tab, setTab] = useState("Product Description");
 
@@ -28,7 +28,7 @@ function SingleProduct() {
     const singleProdFetch = async () => {
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-        const data: Product[] = await response.json();
+        const data: Product = await response.json();
         setSingleProducts(data);
       } catch (err) {
         console.error(err);
