@@ -1,12 +1,7 @@
 import CartIcon from "../assets/cart.svg";
 import Trash from "../assets/trash.svg";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  removeItem,
-  clearCart,
-  increaseQuantity,
-  decreaseQuantity,
-} from "../redux/cartSlice";
+import { removeItem, increaseQuantity, decreaseQuantity, clearCart } from "../redux/cartSlice";
 import type { RootState, AppDispatch } from "../redux/store";
 import type { JSX } from "react";
 
