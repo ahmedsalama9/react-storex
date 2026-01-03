@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeItem, increaseQuantity, decreaseQuantity, clearCart } from "../redux/cartSlice";
 import type { RootState, AppDispatch } from "../redux/store";
 import type { JSX } from "react";
+import type { Product } from "../redux/cartSlice";
 
 function CartPage(): JSX.Element {
   const dispatch: AppDispatch = useDispatch();
@@ -42,7 +43,7 @@ function CartPage(): JSX.Element {
               <p className="text-gray-500 text-lg">Your cart is empty.</p>
             </div>
           ) : (
-            cart.items.map((item) => (
+            cart.items.map((item: Product) => (
               <div
                 key={item.id}
                 className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-200 py-6"
