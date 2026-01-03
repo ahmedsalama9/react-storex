@@ -2,8 +2,7 @@ import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
 import Star from "../assets/star.svg";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 interface Product {
   id: number;

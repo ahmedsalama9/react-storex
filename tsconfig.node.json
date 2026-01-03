@@ -1,17 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "composite": true,
     "module": "Node16",
     "moduleResolution": "Node16",
-    "lib": ["ESNext"],
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "skipLibCheck": true,
-    "types": ["node"]
+    "skipLibCheck": true
   },
   "include": ["vite.config.ts"]
 }

@@ -73,12 +73,11 @@ function CartPage(): JSX.Element {
                   <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-gray-50">
                     <button
                       className="px-3 py-1 text-gray-600 hover:bg-gray-200 transition cursor-pointer"
-                      onClick={() =>
-                        dispatch(decreaseQuantity({ id: item.id }))
-                      }
+                      onClick={() => dispatch(decreaseQuantity(item.id))}
                     >
                       −
                     </button>
+                    
                     <input
                       type="number"
                       value={item.quantity}
@@ -87,9 +86,7 @@ function CartPage(): JSX.Element {
                     />
                     <button
                       className="px-3 py-1 text-gray-600 hover:bg-gray-200 transition cursor-pointer"
-                      onClick={() =>
-                        dispatch(increaseQuantity({ id: item.id }))
-                      }
+                      onClick={() => dispatch(increaseQuantity(item.id))}
                     >
                       +
                     </button>
@@ -98,7 +95,7 @@ function CartPage(): JSX.Element {
                   {/* Remove Item */}
                   <button
                     className="text-red-500 hover:text-red-700 transition"
-                    onClick={() => dispatch(removeItem({ id: item.id }))}
+                    onClick={() => dispatch(removeItem(item.id))}
                   >
                     <img
                       src={Trash}
