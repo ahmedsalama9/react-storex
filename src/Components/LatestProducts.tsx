@@ -10,11 +10,7 @@ import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+
 interface Product {
   id: number;
   title: string;
@@ -72,9 +68,9 @@ function LatestProducts() {
               1280: { slidesPerView: 5 },
             }}
           >
-            {products.map((item, i) => (
+            {products.map((item) => (
               <SwiperSlide>
-                <div className="flex flex-col items-start p-4 shadow-lg  rounded-lg ">
+                <div  key={item.id} className="flex flex-col items-start p-4 shadow-lg  rounded-lg ">
                   <img
                     src={item.image}
                     alt=""

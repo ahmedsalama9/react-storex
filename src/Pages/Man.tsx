@@ -7,9 +7,9 @@ import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addItem } from "../redux/cartSlice";
+import { addItem } from "../redux/CartSlice";
 import { useEffect } from "react";
-import type { AppDispatch } from "../redux/store";
+import type { AppDispatch } from "../redux/Store";
 
 interface Product {
   id: number;

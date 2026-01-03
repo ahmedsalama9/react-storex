@@ -1,11 +1,10 @@
-import React, { JSX, useEffect, useMemo } from "react";
+import { JSX, useEffect, useMemo } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
 import Star from "../assets/star.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import {Products} from "../assets/products.js"
 
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
@@ -30,7 +29,7 @@ type SortingValues =
   | "priceUp"
   | "priceDown"
   | "recent";
-  
+
 function Shop(): JSX.Element {
   const [fakeProducts, setfakeProducts] = useState<Product[]>([]); //api
   const [layOut, setLayOut] = useState("grid");
