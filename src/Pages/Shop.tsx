@@ -34,7 +34,7 @@ type SortingValues =
 function Shop(): JSX.Element {
   const [fakeProducts, setfakeProducts] = useState<Product[]>([]); //api
   const [layOut, setLayOut] = useState("grid");
-  const [catFilter, setCatFilter] = useState<string[]>([]); // filter
+  const [catFilter, setCatFilter] = useState<string[]>([]); // category filter
   const [sortBy, setSortBy] = useState<SortingValues>("relative");
 
   useEffect(() => {
