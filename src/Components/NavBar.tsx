@@ -1,6 +1,6 @@
-import { JSX, useState } from "react";
+import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
+import type { JSX } from "react";
 import Map from "../assets/location.svg";
 import Email from "../assets/envelope.svg";
 import Logo from "../assets/logo.png";
@@ -9,13 +9,13 @@ import Wish from "../assets/wish.svg";
 import User from "../assets/user.svg";
 import Search from "../assets/search.svg";
 import Close from "../assets/close.svg";
+import CartMini from "./CartMini";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import CartMini from "./CartMini";
 
 function NavBar(): JSX.Element {
   const navigate = useNavigate();

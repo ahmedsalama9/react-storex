@@ -16,10 +16,13 @@ interface Blog {
 }
 
 function SingleBlog() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const [singleBlog, setSingleBlog] = useState<Blog | null>(null);
 
   useEffect(() => {
+    // guard for id params
+    if (!id) return;
+    
     const singleBlogFn = async () => {
       try {
         const response = await fetch(`https://dummyjson.com/posts/${id}`);
@@ -33,6 +36,10 @@ function SingleBlog() {
     singleBlogFn();
   }, [id]);
 
+  //guard for using null in typed state,  so do not break the deployment
+  if (!singleBlog) {
+    return <p>single post is loading ....</p>;
+  }
   return (
     <div>
       <div className="w-[80%] mx-10 p-6 mt-20">

@@ -1,4 +1,5 @@
-import { JSX, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
+import type { JSX } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";

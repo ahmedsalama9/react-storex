@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import type { JSX } from "react";
 import ByCategory from "../Components/ByCategory";
 import Category from "../Components/Category";
 import Hero from "../Components/Hero";

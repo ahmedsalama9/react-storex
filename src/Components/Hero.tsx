@@ -1,4 +1,5 @@
-import { useState, useEffect, JSX } from "react";
+import { useState, useEffect } from "react";
+import type { JSX } from "react";
 import Hero1 from "../assets/hero1.png";
 import Hero2 from "../assets/hero2.png";
 import Hero3 from "../assets/hero3.png";

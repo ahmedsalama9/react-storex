@@ -1,4 +1,5 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
+import type { JSX } from "react";
 import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
@@ -19,9 +20,9 @@ interface Product {
     rate: number;
     count: number;
   };
-  discount?: number; 
+  discount?: number;
 }
-function Women() {
+function Women(): JSX.Element {
   const [womenCat, setWomenCat] = useState<Product[]>([]);
   const [layOut, setLayOut] = useState("grid");
 
@@ -35,13 +36,11 @@ function Women() {
   }, []);
   return (
     <div className="flex flex-row items-center justify-center">
-  
       {/* for product side */}
       <div className="mt-40">
         {/* for sorting & layout */}
         <div className="flex flex-row items-center justify-between w-[90%] mx-auto">
           {" "}
-         
           <div className="flex flex-row gap-3 items-center justify-center">
             <img
               onClick={() => setLayOut("grid")}
@@ -59,7 +58,7 @@ function Women() {
         </div>
         {/* for products */}
         <div
-           className={`mt-10 mb-10 ${
+          className={`mt-10 mb-10 ${
             layOut === "grid"
               ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto gap-6"
               : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-[90%] mx-auto gap-5"
@@ -136,8 +135,10 @@ function Women() {
                     />
                     <span>Add to Cart </span>
                   </button>
-                  <Link to={`/shop/${item.id}`} className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer">
-
+                  <Link
+                    to={`/shop/${item.id}`}
+                    className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer"
+                  >
                     <img
                       src={Wish}
                       alt="cart"

@@ -6,9 +6,9 @@ import {
   clearCart,
   increaseQuantity,
   decreaseQuantity,
-} from "../redux/CartSlice";
-import type { RootState, AppDispatch } from "../redux/Store";
-import { JSX } from "react";
+} from "../redux/cartSlice";
+import type { RootState, AppDispatch } from "../redux/store";
+import type { JSX } from "react";
 
 function CartPage(): JSX.Element {
   const dispatch: AppDispatch = useDispatch();

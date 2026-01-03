@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import type { JSX } from "react";
 
 function WishList(): JSX.Element {
   return (
@@ -24,9 +24,13 @@ function WishList(): JSX.Element {
               <h2 className="text-xl font-semibold text-gray-800 mb-2">
                 Classic White T-Shirt
               </h2>
-              <p className="text-sm text-gray-500 mb-4">Size: M | Color: White</p>
+              <p className="text-sm text-gray-500 mb-4">
+                Size: M | Color: White
+              </p>
               <div className="mt-auto flex items-center justify-between">
-                <p className="text-[var(--theme-color)] font-bold text-lg">$29.99</p>
+                <p className="text-[var(--theme-color)] font-bold text-lg">
+                  $29.99
+                </p>
                 <button className="bg-[var(--theme-color)] text-white py-2 px-4 rounded-xl text-sm font-medium hover:bg-[var(--theme-dark)] transition">
                   Add to Cart
                 </button>
@@ -44,10 +48,16 @@ function WishList(): JSX.Element {
               />
             </div>
             <div className="p-6 flex flex-col flex-grow">
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">Denim Jacket</h2>
-              <p className="text-sm text-gray-500 mb-4">Size: L | Color: Blue</p>
+              <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                Denim Jacket
+              </h2>
+              <p className="text-sm text-gray-500 mb-4">
+                Size: L | Color: Blue
+              </p>
               <div className="mt-auto flex items-center justify-between">
-                <p className="text-[var(--theme-color)] font-bold text-lg">$69.99</p>
+                <p className="text-[var(--theme-color)] font-bold text-lg">
+                  $69.99
+                </p>
                 <button className="bg-[var(--theme-color)] text-white py-2 px-4 rounded-xl text-sm font-medium hover:bg-[var(--theme-dark)] transition">
                   Add to Cart
                 </button>
@@ -65,10 +75,16 @@ function WishList(): JSX.Element {
               />
             </div>
             <div className="p-6 flex flex-col flex-grow">
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">Leather Sneakers</h2>
-              <p className="text-sm text-gray-500 mb-4">Size: 42 | Color: Brown</p>
+              <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                Leather Sneakers
+              </h2>
+              <p className="text-sm text-gray-500 mb-4">
+                Size: 42 | Color: Brown
+              </p>
               <div className="mt-auto flex items-center justify-between">
-                <p className="text-[var(--theme-color)] font-bold text-lg">$89.99</p>
+                <p className="text-[var(--theme-color)] font-bold text-lg">
+                  $89.99
+                </p>
                 <button className="bg-[var(--theme-color)] text-white py-2 px-4 rounded-xl text-sm font-medium hover:bg-[var(--theme-dark)] transition">
                   Add to Cart
                 </button>

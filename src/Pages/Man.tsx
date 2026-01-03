@@ -2,14 +2,15 @@ import Cart from "../assets/cart.svg";
 import Wish from "../assets/wish.svg";
 import Max from "../assets/max.svg";
 import Star from "../assets/star.svg";
-import { JSX, useState } from "react";
+import { useState } from "react";
+import type { JSX } from "react";
 import Grid from "../assets/grid.svg";
 import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addItem } from "../redux/CartSlice";
 import { useEffect } from "react";
-import type { AppDispatch } from "../redux/Store";
+import { addItem } from "../redux/cartSlice";
+import type { AppDispatch } from "../redux/store";
 
 interface Product {
   id: number;
@@ -49,6 +50,7 @@ function Man(): JSX.Element {
       addItem({
         id: item.id,
         title: item.title,
+        quantity: 1,
         price: Number(item.price),
         image: item.image,
       })
@@ -87,9 +89,9 @@ function Man(): JSX.Element {
         >
           {manCategory
             .filter((products) => products.category === "men's clothing")
-            .map((item, index) => (
+            .map((item) => (
               <div
-                key={index}
+                key={item.id}
                 className="shadow-lg rounded-lg cursor-pointer flex  flex-col items-start p-4"
               >
                 <img

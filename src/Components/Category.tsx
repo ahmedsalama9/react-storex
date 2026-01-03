@@ -2,7 +2,7 @@ import Man from "../assets/man.png";
 import Women from "../assets/women.png";
 import Kids from "../assets/kids.png";
 import { Link } from "react-router-dom";
-import { JSX } from "react";
+import type { JSX } from "react";
 
 function Category(): JSX.Element {
   const brands: string[] = [

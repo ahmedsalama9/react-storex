@@ -1,7 +1,7 @@
-import { JSX, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import type { JSX } from "react";
 import User from "../assets/user.svg";
 import View from "../assets/view.svg";
 import PostDate from "../assets/dates.svg";
