@@ -5,5 +5,11 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
-createRoot(document.getElementById("root")).render(_jsx(StrictMode, { children: _jsx(BrowserRouter, { children: _jsx(Provider, { store: store, children: _jsx(App, {}) }) }) }));
+import { store } from "../src/redux/store";
+createRoot(document.getElementById("root")).render(
+  _jsx(StrictMode, {
+    children: _jsx(BrowserRouter, {
+      children: _jsx(Provider, { store: store, children: _jsx(App, {}) }),
+    }),
+  })
+);
