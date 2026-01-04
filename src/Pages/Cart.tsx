@@ -1,10 +1,14 @@
 import CartIcon from "../assets/cart.svg";
 import Trash from "../assets/trash.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, increaseQuantity, decreaseQuantity, clearCart } from "../redux/cartSlice";
+import {
+  removeItem,
+  clearCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../redux/cartSlice";
 import type { RootState, AppDispatch } from "../redux/store";
 import type { JSX } from "react";
-import type { Product } from "../redux/cartSlice";
 
 function CartPage(): JSX.Element {
   const dispatch: AppDispatch = useDispatch();
@@ -43,7 +47,7 @@ function CartPage(): JSX.Element {
               <p className="text-gray-500 text-lg">Your cart is empty.</p>
             </div>
           ) : (
-            cart.items.map((item: Product) => (
+            cart.items.map((item) => (
               <div
                 key={item.id}
                 className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-200 py-6"
@@ -69,11 +73,12 @@ function CartPage(): JSX.Element {
                   <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-gray-50">
                     <button
                       className="px-3 py-1 text-gray-600 hover:bg-gray-200 transition cursor-pointer"
-                      onClick={() => dispatch(decreaseQuantity(item.id))}
+                      onClick={() =>
+                        dispatch(decreaseQuantity({ id: item.id }))
+                      }
                     >
                       −
                     </button>
-                    
                     <input
                       type="number"
                       value={item.quantity}
@@ -82,7 +87,9 @@ function CartPage(): JSX.Element {
                     />
                     <button
                       className="px-3 py-1 text-gray-600 hover:bg-gray-200 transition cursor-pointer"
-                      onClick={() => dispatch(increaseQuantity(item.id))}
+                      onClick={() =>
+                        dispatch(increaseQuantity({ id: item.id }))
+                      }
                     >
                       +
                     </button>
@@ -91,7 +98,7 @@ function CartPage(): JSX.Element {
                   {/* Remove Item */}
                   <button
                     className="text-red-500 hover:text-red-700 transition"
-                    onClick={() => dispatch(removeItem(item.id))}
+                    onClick={() => dispatch(removeItem({ id: item.id }))}
                   >
                     <img
                       src={Trash}

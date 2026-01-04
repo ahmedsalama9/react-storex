@@ -9,8 +9,8 @@ import List from "../assets/list.svg";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { addItem } from "../redux/cartSlice";
-import type { AppDispatch } from "../redux/store";
+// import { addItem } from "../redux/cartSlice";
+// import type { AppDispatch } from "../redux/store";
 
 interface Product {
   id: number;
@@ -27,7 +27,7 @@ interface Product {
 }
 
 function Man(): JSX.Element {
-  const dispatch: AppDispatch = useDispatch();
+  // const dispatch: AppDispatch = useDispatch();
 
   const [manCategory, setManCategory] = useState<Product[]>([]);
   const [layOut, setLayOut] = useState("grid");
@@ -45,17 +45,17 @@ function Man(): JSX.Element {
     manProducts();
   }, []);
 
-  const addProductToCart = (item: Product) => {
-    dispatch(
-      addItem({
-        id: item.id,
-        title: item.title,
-        quantity: 1,
-        price: Number(item.price),
-        image: item.image,
-      })
-    );
-  };
+  // const addProductToCart = (item: Product) => {
+  //   dispatch(
+  //     addItem({
+  //       id: item.id,
+  //       title: item.title,
+  //       quantity: 1,
+  //       price: Number(item.price),
+  //       image: item.image,
+  //     })
+  //   );
+  // };
 
   return (
     <div className="flex flex-row items-center justify-center">
@@ -151,9 +151,9 @@ function Man(): JSX.Element {
                 <span className="w-full h-[1px] bg-[var(--theme-dark)] rounded-lg mt-5 mb-3"></span>
                 <div className="flex flex-row gap-1 w-[92%] mx-auto">
                   <button
-                    onClick={() => {
-                      addProductToCart(item);
-                    }}
+                    // onClick={() => {
+                    //   addProductToCart(item);
+                    // }}
                     className=" flex flex-row gap-2 bg-[var(--theme-color)] text-white px-2 py-1 rounded-sm font-medium hover:bg-[var(--theme-color)]/90  cursor-pointer"
                   >
                     <img
